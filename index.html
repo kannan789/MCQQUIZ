@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Q & A Form</title>
+    <style>
+        .questions{
+            margin-left: 30px;
+        }
+        p{
+            background-color: lightblue;
+        }
+        ul{
+            text-decoration: none;
+        }
+        input{
+            margin-right: 5px;
+        }
+        button{
+            margin: 20px 0 0 0;
+            padding:10px 25px 10px 25px;
+            background-color: green;
+            font-weight: 700;
+            color: white;
+            border-radius: 5px;
+        }
+        .result{
+            display: none;
+             margin-top: 20px;
+             margin-bottom: 30px;
+             font-size: 20px;
+        }
+        #score,#final{
+            font-weight: 700;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="questions">
+    <div>
+        <p>Q: Which is the longest river in the world?</p>
+       <ul type="none">
+        <li><input type="radio">Ganga</li>
+        <li><input type="radio">Amazon</li>
+        <li><input type="radio" onselect="addScore()" class="ans">Nile</li>
+        <li><input type="radio">None</li>
+       </ul>
+    </div>
+    <div>
+        <p>Q: Which is the biggest ocean in the world?</p>
+       <ul type="none">
+        <li><input type="radio" onselect="addScore()" class="ans">Pacific</li>
+        <li><input type="radio">Arctic</li>
+        <li><input type="radio">Indian</li>
+        <li><input type="radio">Atlantic</li>
+       </ul>
+    </div>
+    <div>
+        <p>Q: Which is the largest continent in the world?</p>
+       <ul type="none">
+        <li><input type="radio">Europe</li>
+        <li><input type="radio">Africa</li>
+        <li><input type="radio" onselect="addScore()" class="ans">Asia</li>
+        <li><input type="radio">Oceania</li>
+       </ul>
+    </div>
+    <div>
+        <p>Q: What is the capital city of Australia ?</p>
+       <ul type="none">
+        <li><input type="radio">Sydney</li>
+        <li><input type="radio">Melbourne</li>
+        <li><input type="radio">Brisbane</li>
+        <li><input type="radio" onselect="addScore()" class="ans">Canberra</li>
+       </ul>
+    </div>
+    <div>
+        <p>Q: What is the national currency of Germany?</p>
+       <ul type="none">
+        <li><input type="radio">Dollar</li>
+        <li><input type="radio" onselect="addScore()" class="ans">Euro</li>
+        <li><input type="radio">Rupee</li>
+        <li><input type="radio">Pound</li>
+       </ul>
+    </div>
+    <button id="btn" onclick="show()">Submit</button>
+
+    <div class="result">
+        Marks out of 5 is <span id="score"></span> and the decision is <span id="final"></span>
+    </div>
+    </div>
+
+
+    <script>
+        function show(){
+            let count=0;
+            let rightAns=document.querySelectorAll(".ans");
+            for(let i=0;i<rightAns.length;i++)
+            {
+              if(rightAns[i].checked==true)
+              {
+              count++;
+              }
+            }
+            let sc=document.getElementById("score");
+            let res=document.getElementById("final");
+            let showRes=document.querySelector(".result");
+            showRes.style.display="inline-block";
+
+            if(count==5)
+            {   
+            sc.innerHTML="5";
+            res.innerHTML="Yes";
+            }
+            else if(count==4)
+            {
+            sc.innerHTML="4";
+            res.innerHTML="Yes";
+            }
+            else if(count==3)
+            {
+            sc.innerHTML="3";
+            res.innerHTML="May be";
+            }
+            else if(count==2)
+            {
+            sc.innerHTML="2";
+            res.innerHTML="May be";
+            }
+            else if(count==1)
+            {
+            sc.innerHTML="1";
+            res.innerHTML="No";
+            }
+            else if(count==0)
+            {
+            sc.innerHTML="0";
+            res.innerHTML="No";
+            }
+            }
+    </script>
+</body>
+</html>
